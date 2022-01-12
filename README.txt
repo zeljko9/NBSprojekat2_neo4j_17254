@@ -6,6 +6,7 @@ i dodatni opis ako postoji, klikom na dugme "Prijavi policiji" unecete podatke u
 
 Klikom na link "Search" vodi vas na stranicu za pretragu svih slucajeva. Pretraga je moguca po gradu ili po gradu + ulici.
 
+Tehnologije: JavaScript(frontend), flask(web API), NoSQL(neo4j)
 
 NAPOMENA: -CASE SENSITIVE
           -FORMAT UNOSA ULICE: ULICA (ULICA)? BROJ
