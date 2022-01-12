@@ -40,6 +40,8 @@ export class Search{
                 let d=document.getElementsByClassName("dugmad")[0];
                 let l2=document.getElementsByClassName("labela2")[0];
                 let l3=document.getElementsByClassName("labela3")[0];
+                //let tbl1=document.getElementsByClassName("tabela1")[0];
+                let tbl2=document.getElementsByClassName("tabela2")[0];
                 
                 if(rem1!=null){
                     rem1.remove();
@@ -47,6 +49,10 @@ export class Search{
                     d.remove();
                     l2.remove();
                     l3.remove();
+                    //tbl1.remove();
+                    if(tbl2!=null){
+                        tbl2.remove();
+                    }
                 }
 
                 let l1=document.createElement("label");
@@ -75,6 +81,10 @@ export class Search{
                     })
                     .then(response => response.json())
                     .then(data => {
+                        let tbl1=document.getElementsByClassName("tabela1")[0];
+                        if(tbl1!=null){
+                            tbl1.remove();
+                        }
                         this.drawTable1(this.kontejner, data)
                     }).catch(p => {
                         alert("Greška prilikom upisa.");
@@ -86,10 +96,17 @@ export class Search{
                 let l=document.getElementsByClassName("labela1")[0];
                 let rem=document.getElementsByClassName("grad1")[0];
                 let d=document.getElementsByClassName("dugmad")[0];
+                let tbl1=document.getElementsByClassName("tabela1")[0];
+                //let tbl2=document.getElementsByClassName("tabela2")[0];
+                
                 if(rem!=null){
                     rem.remove();
                     d.remove();
                     l.remove();
+                    if(tbl1!=null){
+                        tbl1.remove();
+                    }
+                    //tbl2.remove();
                 }
 
                 let l1=document.createElement("label");
@@ -128,6 +145,10 @@ export class Search{
                     })
                     .then(response => response.json())
                     .then(data => {
+                        let tbl2=document.getElementsByClassName("tabela2")[0];
+                        if(tbl2!=null){
+                            tbl2.remove();
+                        }
                         this.drawTable2(this.kontejner, data)
                     }).catch(p => {
                         alert("Greška prilikom upisa.");
@@ -142,8 +163,9 @@ export class Search{
 
     drawTable1(host, data){
 
+        let divv=document.createElement("div");
+        divv.className="tabela1";
         let ul1=document.createElement("ul");
-
         let li11=document.createElement("li");
         li11.innerHTML="Naziv ulice"
         let li21=document.createElement("li");
@@ -152,7 +174,7 @@ export class Search{
         ul1.appendChild(li11);
         ul1.appendChild(li21);
 
-        host.appendChild(ul1);
+        divv.appendChild(ul1);
 
         for(const street of data){
             let ul=document.createElement("ul");
@@ -165,14 +187,19 @@ export class Search{
             ul.appendChild(li1);
             ul.appendChild(li2);
 
-            host.appendChild(ul);
+            divv.appendChild(ul);
         }
+
+        host.appendChild(divv);
     }
 
     drawTable2(host, data){
 
-        let ul=document.createElement("ul");
+        let divv=document.createElement("div");
+        divv.className="tabela2";
 
+        let ul=document.createElement("ul");
+        ul.className="tabela2";
         let li1=document.createElement("li");
         li1.innerHTML="Broj ulice"
         let li2=document.createElement("li");
@@ -190,21 +217,21 @@ export class Search{
         ul.appendChild(li4);
         ul.appendChild(li5);
 
-        host.appendChild(ul);
+        divv.appendChild(ul);
 
         for(const street of data){
             let ul1=document.createElement("ul");
 
             let li11=document.createElement("li");
-            li11.innerHTML=street["number"]
+            li11.innerHTML=street["number"];
             let li21=document.createElement("li");
-            li21.innerHTML=street["alkotest"]
+            li21.innerHTML=street["alkotest"];
             let li31=document.createElement("li");
-            li31.innerHTML=street["speedtest"]
+            li31.innerHTML=street["speedtest"];
             let li41=document.createElement("li");
-            li41.innerHTML=street["time"]
+            li41.innerHTML=street["time"].substring(0, 16);
             let li51=document.createElement("li");
-            li51.innerHTML=street["adddes"]
+            li51.innerHTML=street["adddes"];
 
             ul1.appendChild(li11);
             ul1.appendChild(li21);
@@ -212,8 +239,10 @@ export class Search{
             ul1.appendChild(li41);
             ul1.appendChild(li51);
 
-            host.appendChild(ul1);
+            divv.appendChild(ul1);
         }
+
+        host.appendChild(divv);
     }
 
 }

@@ -1,2 +1,3 @@
 centriraj jedno ispod drugog za pretragu po ulici
 uredi izgled malo
+obezbedi brisanje tabele nakon azuriranja stranice tj. nakon promene izbora (option)

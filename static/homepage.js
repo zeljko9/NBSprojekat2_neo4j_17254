@@ -66,7 +66,8 @@ export class Homepage{
 
                 const regex1=/[A-Za-z]+[ A-Za-z]* [0-9]+/g;
                 if(!tb2.value.match(regex1)){
-                    alert("Format ulice je \"ulica ulica? broj\"");
+                    alert("Format ulice je \"ulica (ulica)? broj\"");
+                    return;
                 }
 
                 let pom1=document.getElementsByClassName("alkotest")[0];
